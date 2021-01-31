@@ -498,7 +498,7 @@ public class GeneratorHasel extends javax.swing.JFrame {
         sr_jCheckBox_randomCase.setVisible(state);
         sr_jCheckBox_polishLetters.setVisible(state);
         sr_jCheckBox_lowerCase.setSelected(state);
-        sr_jCheckBox_polishLetters.setSelected(false);
+        sr_jCheckBox_polishLetters.setSelected(false);   
     }
     
     Random rand = new Random();
@@ -554,6 +554,7 @@ public class GeneratorHasel extends javax.swing.JFrame {
     }
     
     private void saveSettings(){
+        sr_jLabel_error.setText("");
         try{
             FileWriter fw = new FileWriter(fileSettings);
             
@@ -573,6 +574,8 @@ public class GeneratorHasel extends javax.swing.JFrame {
             String polishLetters = "n";
             if(sr_jCheckBox_polishLetters.isSelected()) polishLetters = "y";
             
+            if(sr_jCheckBox_letters.isSelected() == false && numbers.equals("n") && specialSigns.equals("n")) sr_jLabel_error.setText("Musisz zaznaczyc opcje, aby je zapisac");
+            
             fw.write(passwordLength+";"+letters+";"+numbers+";"+specialSigns+";"+polishLetters);
             fw.close();
         }catch(IOException e){
@@ -581,6 +584,7 @@ public class GeneratorHasel extends javax.swing.JFrame {
     }
     
     private void loadSettings(){
+        sr_jLabel_error.setText("");
         try{
             Scanner sc = new Scanner(fileSettings);
             
