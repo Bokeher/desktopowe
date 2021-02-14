@@ -5,6 +5,13 @@
  */
 package pl.com.szymon.rychter.przelicznikjednostek;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Scanner;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Szymon
@@ -16,6 +23,8 @@ public class PrzelicznikJednostek extends javax.swing.JFrame {
      */
     public PrzelicznikJednostek() {
         initComponents();
+        sr_jLabel_error.setText("");
+        sr_jLabel_errorTemp.setText("");
     }
 
     /**
@@ -27,28 +36,47 @@ public class PrzelicznikJednostek extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTabbedPane1 = new javax.swing.JTabbedPane();
-        jPanel1 = new javax.swing.JPanel();
+        sr_jTabbedPane = new javax.swing.JTabbedPane();
+        sr_jPanel_distanceConverter = new javax.swing.JPanel();
         sr_jComboBox_firstType = new javax.swing.JComboBox<>();
         sr_jComboBox_finalType = new javax.swing.JComboBox<>();
         sr_jButton_convert = new javax.swing.JButton();
         sr_jTextField_firstValue = new javax.swing.JTextField();
         sr_jLabel_firstValue = new javax.swing.JLabel();
         sr_jLabel_finalValue = new javax.swing.JLabel();
-        sr_jLabel_convertedValue = new javax.swing.JLabel();
+        sr_jLabel_error = new javax.swing.JLabel();
         sr_jTextField_finalValue = new javax.swing.JTextField();
-        jPanel2 = new javax.swing.JPanel();
+        sr_jPanel_temperatureConverter = new javax.swing.JPanel();
+        sr_jLabel_firstValueTemp = new javax.swing.JLabel();
+        sr_jComboBox_firstTypeTemp = new javax.swing.JComboBox<>();
+        sr_jTextField_firstValueTemp = new javax.swing.JTextField();
+        sr_jLabel_finalValueTemp = new javax.swing.JLabel();
+        sr_jComboBox_finalTypeTemp = new javax.swing.JComboBox<>();
+        sr_jTextField_finalValueTemp = new javax.swing.JTextField();
+        sr_jButton_convertTemp = new javax.swing.JButton();
+        sr_jLabel_errorTemp = new javax.swing.JLabel();
+        sr_jMenuBar = new javax.swing.JMenuBar();
+        sr_jMenu_file = new javax.swing.JMenu();
+        sr_jMenuItem_showHistory = new javax.swing.JMenuItem();
+        sr_jMenuItem_exit = new javax.swing.JMenuItem();
+        sr_jMenu_info = new javax.swing.JMenu();
+        sr_jMenuItem_info = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Przelicznik jednostek");
 
-        sr_jComboBox_firstType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "mm", "cm", "dm", "km" }));
+        sr_jTabbedPane.setBackground(new java.awt.Color(102, 102, 102));
+
+        sr_jPanel_distanceConverter.setBackground(new java.awt.Color(102, 102, 102));
+
+        sr_jComboBox_firstType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "mm", "cm", "dm", "m", "km" }));
         sr_jComboBox_firstType.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sr_jComboBox_firstTypeActionPerformed(evt);
             }
         });
 
-        sr_jComboBox_finalType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "mm", "cm", "dm", "km" }));
+        sr_jComboBox_finalType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "mm", "cm", "dm", "m", "km" }));
         sr_jComboBox_finalType.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sr_jComboBox_finalTypeActionPerformed(evt);
@@ -62,81 +90,192 @@ public class PrzelicznikJednostek extends javax.swing.JFrame {
             }
         });
 
+        sr_jLabel_firstValue.setForeground(new java.awt.Color(255, 255, 255));
         sr_jLabel_firstValue.setText("Wybierz jednostkę podstawową i wpisz jej wartość");
 
+        sr_jLabel_finalValue.setForeground(new java.awt.Color(255, 255, 255));
         sr_jLabel_finalValue.setText("Wybierz jednostkę na którą chcesz przeliczyć");
 
-        sr_jLabel_convertedValue.setText("Wynik");
+        sr_jLabel_error.setForeground(new java.awt.Color(255, 255, 255));
+        sr_jLabel_error.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        sr_jLabel_error.setText("error");
 
         sr_jTextField_finalValue.setEditable(false);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout sr_jPanel_distanceConverterLayout = new javax.swing.GroupLayout(sr_jPanel_distanceConverter);
+        sr_jPanel_distanceConverter.setLayout(sr_jPanel_distanceConverterLayout);
+        sr_jPanel_distanceConverterLayout.setHorizontalGroup(
+            sr_jPanel_distanceConverterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(sr_jPanel_distanceConverterLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(sr_jLabel_firstValue, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(sr_jComboBox_firstType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(sr_jPanel_distanceConverterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(sr_jPanel_distanceConverterLayout.createSequentialGroup()
+                        .addComponent(sr_jComboBox_firstType, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(sr_jTextField_firstValue, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(sr_jComboBox_finalType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(sr_jPanel_distanceConverterLayout.createSequentialGroup()
+                        .addComponent(sr_jComboBox_finalType, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(sr_jTextField_finalValue, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(sr_jLabel_finalValue)
-                    .addComponent(sr_jButton_convert)
-                    .addComponent(sr_jLabel_convertedValue))
-                .addContainerGap(324, Short.MAX_VALUE))
+                    .addGroup(sr_jPanel_distanceConverterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(sr_jLabel_finalValue, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, sr_jPanel_distanceConverterLayout.createSequentialGroup()
+                            .addComponent(sr_jButton_convert)
+                            .addGap(18, 18, 18)
+                            .addComponent(sr_jLabel_error, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(sr_jLabel_firstValue, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(286, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        sr_jPanel_distanceConverterLayout.setVerticalGroup(
+            sr_jPanel_distanceConverterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(sr_jPanel_distanceConverterLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(sr_jLabel_firstValue, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(sr_jPanel_distanceConverterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(sr_jComboBox_firstType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(sr_jTextField_firstValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(16, 16, 16)
                 .addComponent(sr_jLabel_finalValue)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(sr_jPanel_distanceConverterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(sr_jComboBox_finalType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(sr_jTextField_finalValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(sr_jButton_convert)
+                .addGroup(sr_jPanel_distanceConverterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(sr_jButton_convert, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(sr_jLabel_error, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(237, Short.MAX_VALUE))
+        );
+
+        sr_jTabbedPane.addTab("Przelicznik jednostek odległości", sr_jPanel_distanceConverter);
+
+        sr_jPanel_temperatureConverter.setBackground(new java.awt.Color(102, 102, 102));
+
+        sr_jLabel_firstValueTemp.setForeground(new java.awt.Color(255, 255, 255));
+        sr_jLabel_firstValueTemp.setText("Wybierz jednostkę podstawową i wpisz jej wartość");
+
+        sr_jComboBox_firstTypeTemp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "K", "°C", "°F" }));
+        sr_jComboBox_firstTypeTemp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sr_jComboBox_firstTypeTempActionPerformed(evt);
+            }
+        });
+
+        sr_jLabel_finalValueTemp.setForeground(new java.awt.Color(255, 255, 255));
+        sr_jLabel_finalValueTemp.setText("Wybierz jednostkę na którą chcesz przeliczyć");
+
+        sr_jComboBox_finalTypeTemp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "K", "°C", "°F" }));
+        sr_jComboBox_finalTypeTemp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sr_jComboBox_finalTypeTempActionPerformed(evt);
+            }
+        });
+
+        sr_jTextField_finalValueTemp.setEditable(false);
+
+        sr_jButton_convertTemp.setText("Przelicz");
+        sr_jButton_convertTemp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sr_jButton_convertTempActionPerformed(evt);
+            }
+        });
+
+        sr_jLabel_errorTemp.setForeground(new java.awt.Color(255, 255, 255));
+        sr_jLabel_errorTemp.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        sr_jLabel_errorTemp.setText("error");
+
+        javax.swing.GroupLayout sr_jPanel_temperatureConverterLayout = new javax.swing.GroupLayout(sr_jPanel_temperatureConverter);
+        sr_jPanel_temperatureConverter.setLayout(sr_jPanel_temperatureConverterLayout);
+        sr_jPanel_temperatureConverterLayout.setHorizontalGroup(
+            sr_jPanel_temperatureConverterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(sr_jPanel_temperatureConverterLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(sr_jPanel_temperatureConverterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(sr_jPanel_temperatureConverterLayout.createSequentialGroup()
+                        .addComponent(sr_jComboBox_firstTypeTemp, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(sr_jTextField_firstValueTemp, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(sr_jPanel_temperatureConverterLayout.createSequentialGroup()
+                        .addComponent(sr_jComboBox_finalTypeTemp, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(sr_jTextField_finalValueTemp, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(sr_jPanel_temperatureConverterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(sr_jLabel_finalValueTemp, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, sr_jPanel_temperatureConverterLayout.createSequentialGroup()
+                            .addComponent(sr_jButton_convertTemp)
+                            .addGap(18, 18, 18)
+                            .addComponent(sr_jLabel_errorTemp, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(sr_jLabel_firstValueTemp, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(285, Short.MAX_VALUE))
+        );
+        sr_jPanel_temperatureConverterLayout.setVerticalGroup(
+            sr_jPanel_temperatureConverterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(sr_jPanel_temperatureConverterLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(sr_jLabel_firstValueTemp, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(sr_jPanel_temperatureConverterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(sr_jComboBox_firstTypeTemp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sr_jTextField_firstValueTemp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(16, 16, 16)
+                .addComponent(sr_jLabel_finalValueTemp)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(sr_jLabel_convertedValue)
-                .addContainerGap(233, Short.MAX_VALUE))
+                .addGroup(sr_jPanel_temperatureConverterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(sr_jComboBox_finalTypeTemp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sr_jTextField_finalValueTemp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(sr_jPanel_temperatureConverterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(sr_jButton_convertTemp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(sr_jLabel_errorTemp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(237, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Przelicznik jednostek odległości", jPanel1);
+        sr_jTabbedPane.addTab("Przelicznik temperatury", sr_jPanel_temperatureConverter);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 595, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 422, Short.MAX_VALUE)
-        );
+        sr_jMenu_file.setText("Plik");
 
-        jTabbedPane1.addTab("Przelicznik temperatury", jPanel2);
+        sr_jMenuItem_showHistory.setText("Pokaż historię");
+        sr_jMenuItem_showHistory.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sr_jMenuItem_showHistoryActionPerformed(evt);
+            }
+        });
+        sr_jMenu_file.add(sr_jMenuItem_showHistory);
+
+        sr_jMenuItem_exit.setText("Zamknij");
+        sr_jMenuItem_exit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sr_jMenuItem_exitActionPerformed(evt);
+            }
+        });
+        sr_jMenu_file.add(sr_jMenuItem_exit);
+
+        sr_jMenuBar.add(sr_jMenu_file);
+
+        sr_jMenu_info.setText("O programie");
+
+        sr_jMenuItem_info.setText("O programie");
+        sr_jMenuItem_info.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sr_jMenuItem_infoActionPerformed(evt);
+            }
+        });
+        sr_jMenu_info.add(sr_jMenuItem_info);
+
+        sr_jMenuBar.add(sr_jMenu_info);
+
+        setJMenuBar(sr_jMenuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(sr_jTabbedPane)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(sr_jTabbedPane, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         pack();
@@ -151,14 +290,107 @@ public class PrzelicznikJednostek extends javax.swing.JFrame {
     }//GEN-LAST:event_sr_jComboBox_finalTypeActionPerformed
 
     private void sr_jButton_convertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sr_jButton_convertActionPerformed
-        String firstType = (String) sr_jComboBox_firstType.getSelectedItem();
-        int firstValue = Integer.parseInt(sr_jTextField_firstValue.getText());
-        String finalType = (String) sr_jComboBox_finalType.getSelectedItem();
-        
-        float convertedValue = convert(firstValue, firstType, finalType);
-        System.out.print(convertedValue);
-        sr_jTextField_finalValue.setText(Float.toString(convertedValue));
+        if(sr_jTextField_firstValue.getText().equals("")) sr_jLabel_error.setText("Nie podano wartości");
+        else{
+            sr_jLabel_error.setText("");
+            int firstValue = Integer.parseInt(sr_jTextField_firstValue.getText());
+            String firstType = (String) sr_jComboBox_firstType.getSelectedItem();
+            String finalType = (String) sr_jComboBox_finalType.getSelectedItem();
+
+            double convertedValue = convert(firstValue, firstType, finalType);
+            sr_jTextField_finalValue.setText(Double.toString(convertedValue));
+            
+            try{
+                FileWriter fw = new FileWriter(file, true);
+                
+                fw.write("d;"+firstType+";"+firstValue+";"+finalType+";"+convertedValue+"\n");
+                fw.close();
+            }catch(IOException e){
+                System.out.println(e.toString());
+            }  
+        }
     }//GEN-LAST:event_sr_jButton_convertActionPerformed
+
+    private void sr_jMenuItem_showHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sr_jMenuItem_showHistoryActionPerformed
+        String text = "";
+        String textTemp = "";
+        try {
+            Scanner sc = new Scanner(file);
+            while(sc.hasNext()) {
+                String line = sc.nextLine();
+                String []data = line.split(";");
+                
+                if(data[0].equals("d")){
+                    text += data[2]+data[1]+" -> "+data[4]+data[3]+"<br>"; 
+                }else{
+                    textTemp += data[2]+data[1]+" -> "+data[4]+data[3]+"<br>";
+                }
+            }
+        } catch (FileNotFoundException ex){
+            System.out.print(ex.toString());
+        }
+
+        
+        String message = 
+                "<html>"
+                + "<style>table, td{border: 1px solid black}</style>"
+                + "<table>"
+                    + "<tr>"
+                        + "<td>Długości</td>"
+                        + "<td>Temperatura</td>"
+                    + "</tr>"
+                    + "<tr>"
+                        + "<td>"+text+"</td>"
+                        + "<td>"+textTemp+"</td>"
+                    + "</tr>"
+                + "</table>"
+                + "</html>";
+        
+        JOptionPane.showMessageDialog(this, message, "Historia", JOptionPane.PLAIN_MESSAGE);
+    }//GEN-LAST:event_sr_jMenuItem_showHistoryActionPerformed
+
+    private void sr_jMenuItem_infoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sr_jMenuItem_infoActionPerformed
+        JOptionPane.showMessageDialog(this, "Program przelicza jednostki długości i temperatury.", "O programie", JOptionPane.PLAIN_MESSAGE);
+    }//GEN-LAST:event_sr_jMenuItem_infoActionPerformed
+
+    private void sr_jComboBox_firstTypeTempActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sr_jComboBox_firstTypeTempActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_sr_jComboBox_firstTypeTempActionPerformed
+
+    private void sr_jComboBox_finalTypeTempActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sr_jComboBox_finalTypeTempActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_sr_jComboBox_finalTypeTempActionPerformed
+
+    private void sr_jButton_convertTempActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sr_jButton_convertTempActionPerformed
+        if(sr_jTextField_firstValueTemp.getText().equals("")) sr_jLabel_errorTemp.setText("Nie podano wartości");
+        else{
+            sr_jLabel_errorTemp.setText("");
+            int firstValue = Integer.parseInt(sr_jTextField_firstValueTemp.getText());
+            String firstType = (String) sr_jComboBox_firstTypeTemp.getSelectedItem();
+            String finalType = (String) sr_jComboBox_finalTypeTemp.getSelectedItem();
+
+            double convertedValue = convertTemp(firstValue, firstType, finalType);
+            
+            convertedValue*=100;
+            convertedValue = Math.round(convertedValue);
+            convertedValue/=100;
+            
+            sr_jTextField_finalValueTemp.setText(Double.toString(convertedValue));
+            
+            try{
+                FileWriter fw = new FileWriter(file, true);
+                
+                fw.write("t;"+firstType+";"+firstValue+";"+finalType+";"+convertedValue+"\n");
+                fw.close();
+            }catch(IOException e){
+                System.out.println(e.toString());
+            }  
+        }
+    }//GEN-LAST:event_sr_jButton_convertTempActionPerformed
+
+    private void sr_jMenuItem_exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sr_jMenuItem_exitActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_sr_jMenuItem_exitActionPerformed
 
     /**
      * @param args the command line arguments
@@ -195,13 +427,15 @@ public class PrzelicznikJednostek extends javax.swing.JFrame {
         });
     }
     
-    private float convert(int firstValue, String firstType, String finalType){
+    private double convert(int firstValue, String firstType, String finalType){
         int mmValue = convertToMm(firstValue, firstType);
-        if(finalType.equals("cm")) return (float) mmValue / 10;
-        else if(finalType.equals("dm")) return (float) mmValue / 100;
-        else if(finalType.equals("m")) return (float) mmValue / 1000;
-        else if(finalType.equals("km")) return (float) mmValue / 1000000;
-        else return (float) mmValue;
+        int converter = 1;
+        if(finalType.equals("cm")) converter = 10;
+        else if(finalType.equals("dm")) converter = 100;
+        else if(finalType.equals("m")) converter = 1000;
+        else if(finalType.equals("km")) converter = 1000000;
+        
+        return (double) mmValue / converter;
     }
     
     private int convertToMm(int numb, String type){
@@ -214,17 +448,50 @@ public class PrzelicznikJednostek extends javax.swing.JFrame {
         return numb * converter;
     }
     
+    private double convertTemp(int firstValue, String firstType, String finalType){
+        //K, °C, °F
+        if(firstType.equals("K")){
+            if(finalType.equals("°C")) return firstValue-273.15;
+            else if(finalType.equals("°F")) return firstValue*9/5 - 459.67;
+            else return firstValue;
+        }else if(firstType.equals("°C")){
+            if(finalType.equals("K")) return firstValue+273.15;
+            else if(finalType.equals("°F")) return firstValue*9/5 + 32;
+            else return firstValue;
+        }else{ //°F
+            if(finalType.equals("°C")) return (firstValue-32)*5/9;
+            else if(finalType.equals("K")) return (firstValue+459.67)*5/9;
+            else return firstValue;
+        }
+    }
+    
+    File file = new File("convHistory.txt");
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JButton sr_jButton_convert;
+    private javax.swing.JButton sr_jButton_convertTemp;
     private javax.swing.JComboBox<String> sr_jComboBox_finalType;
+    private javax.swing.JComboBox<String> sr_jComboBox_finalTypeTemp;
     private javax.swing.JComboBox<String> sr_jComboBox_firstType;
-    private javax.swing.JLabel sr_jLabel_convertedValue;
+    private javax.swing.JComboBox<String> sr_jComboBox_firstTypeTemp;
+    private javax.swing.JLabel sr_jLabel_error;
+    private javax.swing.JLabel sr_jLabel_errorTemp;
     private javax.swing.JLabel sr_jLabel_finalValue;
+    private javax.swing.JLabel sr_jLabel_finalValueTemp;
     private javax.swing.JLabel sr_jLabel_firstValue;
+    private javax.swing.JLabel sr_jLabel_firstValueTemp;
+    private javax.swing.JMenuBar sr_jMenuBar;
+    private javax.swing.JMenuItem sr_jMenuItem_exit;
+    private javax.swing.JMenuItem sr_jMenuItem_info;
+    private javax.swing.JMenuItem sr_jMenuItem_showHistory;
+    private javax.swing.JMenu sr_jMenu_file;
+    private javax.swing.JMenu sr_jMenu_info;
+    private javax.swing.JPanel sr_jPanel_distanceConverter;
+    private javax.swing.JPanel sr_jPanel_temperatureConverter;
+    private javax.swing.JTabbedPane sr_jTabbedPane;
     private javax.swing.JTextField sr_jTextField_finalValue;
+    private javax.swing.JTextField sr_jTextField_finalValueTemp;
     private javax.swing.JTextField sr_jTextField_firstValue;
+    private javax.swing.JTextField sr_jTextField_firstValueTemp;
     // End of variables declaration//GEN-END:variables
 }
