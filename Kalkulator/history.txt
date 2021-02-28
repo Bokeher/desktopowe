@@ -1,0 +1,8 @@
+2+6 = 8
+8-3 = 5
+5*6 = 30
+30/9 = 3.3333333
+sqrt(3.3333333) = 1.8257419
+8^2 = 64
+9/0 = Nie mo¿na dzieliæ przez 0!
+sqrt(-9) = Nie ma pierwiastka 2 stopnia z liczby ujemnej
