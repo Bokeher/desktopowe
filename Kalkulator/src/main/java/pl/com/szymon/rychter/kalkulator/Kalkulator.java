@@ -10,6 +10,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -468,6 +469,7 @@ public class Kalkulator extends javax.swing.JFrame {
         String date = JOptionPane.showInputDialog("Wprowadz date w formacie dd mm yyyy np. 01 02 2021");
         LocalDate LocDateNow = LocalDate.now();
         LocalDate LocDateInput = LocalDate.parse(date, formatter);
+        long days = ChronoUnit.DAYS.between(LocDateInput, LocDateNow);
     }//GEN-LAST:event_sr_jMenuItem_howManyDaysBetweenDatesActionPerformed
        
     private void addOper(String oper){
