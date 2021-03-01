@@ -8,8 +8,10 @@ package pl.com.szymon.rychter.kalkulator;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.format.DateTimeFormatter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -315,6 +317,11 @@ public class Kalkulator extends javax.swing.JFrame {
         sr_jMenu_tools.setText("Narzędzia");
 
         sr_jMenuItem_howManyDaysBetweenDates.setText("Ile dni pomiędzy datami");
+        sr_jMenuItem_howManyDaysBetweenDates.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sr_jMenuItem_howManyDaysBetweenDatesActionPerformed(evt);
+            }
+        });
         sr_jMenu_tools.add(sr_jMenuItem_howManyDaysBetweenDates);
 
         sr_jMenuBar.add(sr_jMenu_tools);
@@ -454,6 +461,11 @@ public class Kalkulator extends javax.swing.JFrame {
     private void sr_jMenuItem_exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sr_jMenuItem_exitActionPerformed
         System.exit(0);
     }//GEN-LAST:event_sr_jMenuItem_exitActionPerformed
+
+    private void sr_jMenuItem_howManyDaysBetweenDatesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sr_jMenuItem_howManyDaysBetweenDatesActionPerformed
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MM yyyy");
+        JOptionPane.showInputDialog("Wprowadz date w formacie dd mm yyyy np. 01.02.2021");
+    }//GEN-LAST:event_sr_jMenuItem_howManyDaysBetweenDatesActionPerformed
        
     private void addOper(String oper){
         add(oper);
