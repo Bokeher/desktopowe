@@ -8,6 +8,7 @@ package pl.com.szymon.rychter.kalkulator;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -464,7 +465,9 @@ public class Kalkulator extends javax.swing.JFrame {
 
     private void sr_jMenuItem_howManyDaysBetweenDatesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sr_jMenuItem_howManyDaysBetweenDatesActionPerformed
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MM yyyy");
-        JOptionPane.showInputDialog("Wprowadz date w formacie dd mm yyyy np. 01.02.2021");
+        String date = JOptionPane.showInputDialog("Wprowadz date w formacie dd mm yyyy np. 01 02 2021");
+        LocalDate LocDateNow = LocalDate.now();
+        LocalDate LocDateInput = LocalDate.parse(date, formatter);
     }//GEN-LAST:event_sr_jMenuItem_howManyDaysBetweenDatesActionPerformed
        
     private void addOper(String oper){
