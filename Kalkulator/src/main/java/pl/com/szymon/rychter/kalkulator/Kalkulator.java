@@ -58,6 +58,8 @@ public class Kalkulator extends javax.swing.JFrame {
         sr_jMenu_file = new javax.swing.JMenu();
         sr_jCheckBoxMenuItem_savingToFile = new javax.swing.JCheckBoxMenuItem();
         sr_jMenuItem_exit = new javax.swing.JMenuItem();
+        sr_jMenu_tools = new javax.swing.JMenu();
+        sr_jMenuItem_howManyDaysBetweenDates = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -310,6 +312,13 @@ public class Kalkulator extends javax.swing.JFrame {
 
         sr_jMenuBar.add(sr_jMenu_file);
 
+        sr_jMenu_tools.setText("Narzędzia");
+
+        sr_jMenuItem_howManyDaysBetweenDates.setText("Ile dni pomiędzy datami");
+        sr_jMenu_tools.add(sr_jMenuItem_howManyDaysBetweenDates);
+
+        sr_jMenuBar.add(sr_jMenu_tools);
+
         setJMenuBar(sr_jMenuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -547,7 +556,9 @@ public class Kalkulator extends javax.swing.JFrame {
     private javax.swing.JCheckBoxMenuItem sr_jCheckBoxMenuItem_savingToFile;
     private javax.swing.JMenuBar sr_jMenuBar;
     private javax.swing.JMenuItem sr_jMenuItem_exit;
+    private javax.swing.JMenuItem sr_jMenuItem_howManyDaysBetweenDates;
     private javax.swing.JMenu sr_jMenu_file;
+    private javax.swing.JMenu sr_jMenu_tools;
     private javax.swing.JPanel sr_jPanel_main;
     private javax.swing.JTextField sr_jTextField;
     // End of variables declaration//GEN-END:variables
