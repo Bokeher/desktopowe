@@ -10,6 +10,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.time.temporal.ChronoUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -466,15 +467,23 @@ public class Kalkulator extends javax.swing.JFrame {
 
     private void sr_jMenuItem_howManyDaysBetweenDatesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sr_jMenuItem_howManyDaysBetweenDatesActionPerformed
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MM yyyy");
-        String date = JOptionPane.showInputDialog("Wprowadz date w formacie dd mm yyyy np. 11 11 2011");
-        if(date != null && date.length() == 10){
-            LocalDate LocDateNow = LocalDate.now();
-            LocalDate LocDateInput = LocalDate.parse(date, formatter);
-            long days = ChronoUnit.DAYS.between(LocDateInput, LocDateNow);
-
-            JOptionPane.showMessageDialog(rootPane, ""+days, "Ilość dni", HEIGHT);
+        String info = "\n";
+        while(!info.equals("ok")){
+            String date = JOptionPane.showInputDialog("Wprowadz date w formacie dd mm yyyy np. 11 11 2011"+info);
+            if(date != null && date.length() == 10){
+                LocalDate LocDateNow = LocalDate.now();
+                try{
+                    LocalDate LocDateInput = LocalDate.parse(date, formatter);
+                    long days = ChronoUnit.DAYS.between(LocDateInput, LocDateNow);
+                    JOptionPane.showMessageDialog(rootPane, ""+days, "Ilość dni", HEIGHT);
+                    info = "ok";
+                } catch(DateTimeParseException e){
+                    info = "\nWprowadzono zły format daty";
+                }
+            }else{
+                info = "ok";
+            }
         }
-        
         
     }//GEN-LAST:event_sr_jMenuItem_howManyDaysBetweenDatesActionPerformed
        
