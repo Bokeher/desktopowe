@@ -5,6 +5,9 @@
  */
 package pl.com.szymon.rychter.listazakupw;
 
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
 /**
  *
  * @author Szymon
@@ -16,6 +19,7 @@ public class ListaZakupow extends javax.swing.JFrame {
      */
     public ListaZakupow() {
         initComponents();
+        addKeyListenerTosr_jTextField_insertName();
     }
 
     /**
@@ -233,6 +237,47 @@ public class ListaZakupow extends javax.swing.JFrame {
         });
     }
 
+    private void addKeyListenerTosr_jTextField_insertName(){
+        sr_jTextField_insertName.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+               if(e.getKeyChar() == KeyEvent.VK_ENTER) sr_jTextField_today.setText(sr_jTextField_insertName.getText());
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                
+            }
+        });
+    }
+    
+    private void addKeyListenerTosr_jTextField_insertValue(){
+        sr_jTextField_insertValue.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                char ch = e.getKeyChar();
+                if(ch == '0' || ch == '1' || ch == '2' || ch == '3' || ch == '4' || ch == '5' || ch == '6' || ch == '7' || ch == '8' || ch == '9'){
+                    System.out.println("Nacisnieto cyfre "+ch);
+                }
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        });
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton sr_jButton_save;
     private javax.swing.JComboBox<String> sr_jComboBox_typeOfProduct;
