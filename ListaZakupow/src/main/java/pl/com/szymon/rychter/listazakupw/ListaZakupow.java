@@ -21,6 +21,7 @@ public class ListaZakupow extends javax.swing.JFrame {
         initComponents();
         addKeyListenerTosr_jTextField_insertName();
         addKeyListenerTosr_jTextField_insertValue();
+        addKeyListenerTosr_jTextField_date();
     }
 
     /**
@@ -262,7 +263,10 @@ public class ListaZakupow extends javax.swing.JFrame {
         sr_jTextField_insertName.addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
-               if(e.getKeyChar() == KeyEvent.VK_ENTER) sr_jTextField_today.setText(sr_jTextField_insertName.getText());
+                if(e.getKeyChar() == KeyEvent.VK_ENTER){
+                    System.out.println("Wprowadzono dane: ");
+                    sr_jTextField_insertName.setText(sr_jTextField_insertName.getText());
+                }
             }
 
             @Override
@@ -283,9 +287,9 @@ public class ListaZakupow extends javax.swing.JFrame {
             public void keyTyped(KeyEvent e) {
                 char ch = e.getKeyChar();
                 if((ch >= '0' && ch <= 9) || ch == KeyEvent.VK_BACK_SPACE){
-                    sr_jTextField_today.setEditable(true);
+                    sr_jTextField_insertValue.setEditable(true);
                     System.out.println("Nacisnieto cyfre "+ch);
-                }else sr_jTextField_today.setEditable(false);
+                }else sr_jTextField_insertValue.setEditable(false);
             }
 
             @Override
@@ -305,10 +309,10 @@ public class ListaZakupow extends javax.swing.JFrame {
             @Override
             public void keyTyped(KeyEvent e) {
                 char ch = e.getKeyChar();
-                if((ch >= '0' && ch <= 9) || ch == KeyEvent.VK_BACK_SPACE){
-                    sr_jTextField_today.setEditable(true);
+                if(ch >= '0' && ch <= 9 || ch == KeyEvent.VK_BACK_SPACE){
+                    sr_jTextField_date.setEditable(true);
                     System.out.println("Nacisnieto cyfre "+ch);
-                }else sr_jTextField_today.setEditable(false);
+                }else sr_jTextField_date.setEditable(false);
             }
 
             @Override
