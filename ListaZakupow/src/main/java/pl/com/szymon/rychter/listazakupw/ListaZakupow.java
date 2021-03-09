@@ -309,7 +309,7 @@ public class ListaZakupow extends javax.swing.JFrame {
             @Override
             public void keyTyped(KeyEvent e) {
                 char ch = e.getKeyChar();
-                if(ch >= '0' && ch <= '9' || ch == KeyEvent.VK_BACK_SPACE){
+                if(ch >= '0' && ch <= '9' || ch == KeyEvent.VK_BACK_SPACE || ch == KeyEvent.VK_PERIOD){
                     sr_jTextField_date.setEditable(true);
                     System.out.println("Nacisnieto cyfre "+ch);
                 }else sr_jTextField_date.setEditable(false);
