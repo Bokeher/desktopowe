@@ -40,7 +40,6 @@ public class ListaZakupow extends javax.swing.JFrame {
         sr_jLabel_insertValue = new javax.swing.JLabel();
         sr_jTextField_insertValue = new javax.swing.JTextField();
         sr_jLabel_today = new javax.swing.JLabel();
-        sr_jTextField_today = new javax.swing.JTextField();
         sr_jLabel_typeOfProduct = new javax.swing.JLabel();
         sr_jComboBox_typeOfProduct = new javax.swing.JComboBox<>();
         sr_jLabel_date = new javax.swing.JLabel();
@@ -50,6 +49,8 @@ public class ListaZakupow extends javax.swing.JFrame {
         sr_jLabel_weeklyCost = new javax.swing.JLabel();
         sr_jTextField_weeklyCost = new javax.swing.JTextField();
         sr_jTextField_todayCost = new javax.swing.JTextField();
+        sr_jScrollPane = new javax.swing.JScrollPane();
+        sr_jTextArea_today = new javax.swing.JTextArea();
         sr_jPanel_insert = new javax.swing.JPanel();
         sr_jMenuBar = new javax.swing.JMenuBar();
         sr_jMenu_file = new javax.swing.JMenu();
@@ -82,6 +83,11 @@ public class ListaZakupow extends javax.swing.JFrame {
         });
 
         sr_jButton_save.setText("ZAPISZ");
+        sr_jButton_save.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sr_jButton_saveActionPerformed(evt);
+            }
+        });
 
         sr_jLabel_todayCost.setText("Wydatki z dzisiaj:");
 
@@ -92,6 +98,10 @@ public class ListaZakupow extends javax.swing.JFrame {
                 sr_jTextField_todayCostActionPerformed(evt);
             }
         });
+
+        sr_jTextArea_today.setColumns(20);
+        sr_jTextArea_today.setRows(5);
+        sr_jScrollPane.setViewportView(sr_jTextArea_today);
 
         javax.swing.GroupLayout sr_jPanel_insertDataLayout = new javax.swing.GroupLayout(sr_jPanel_insertData);
         sr_jPanel_insertData.setLayout(sr_jPanel_insertDataLayout);
@@ -114,19 +124,19 @@ public class ListaZakupow extends javax.swing.JFrame {
                                     .addComponent(sr_jTextField_date)))
                             .addComponent(sr_jButton_save, javax.swing.GroupLayout.Alignment.TRAILING)))
                     .addGroup(sr_jPanel_insertDataLayout.createSequentialGroup()
-                        .addGroup(sr_jPanel_insertDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(sr_jTextField_today)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, sr_jPanel_insertDataLayout.createSequentialGroup()
+                        .addGroup(sr_jPanel_insertDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(sr_jPanel_insertDataLayout.createSequentialGroup()
                                 .addGroup(sr_jPanel_insertDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(sr_jPanel_insertDataLayout.createSequentialGroup()
                                         .addComponent(sr_jLabel_insertName)
-                                        .addGap(0, 162, Short.MAX_VALUE))
+                                        .addGap(0, 176, Short.MAX_VALUE))
                                     .addComponent(sr_jTextField_insertName))
                                 .addGap(18, 18, 18)
                                 .addGroup(sr_jPanel_insertDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(sr_jLabel_insertValue)
-                                    .addComponent(sr_jTextField_insertValue, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(18, 18, 18)
+                                    .addComponent(sr_jTextField_insertValue, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(sr_jScrollPane))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(sr_jPanel_insertDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(sr_jPanel_insertDataLayout.createSequentialGroup()
                                 .addComponent(sr_jLabel_todayCost)
@@ -160,10 +170,6 @@ public class ListaZakupow extends javax.swing.JFrame {
                     .addComponent(sr_jButton_save))
                 .addGroup(sr_jPanel_insertDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(sr_jPanel_insertDataLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(sr_jTextField_today)
-                        .addContainerGap())
-                    .addGroup(sr_jPanel_insertDataLayout.createSequentialGroup()
                         .addGap(17, 17, 17)
                         .addGroup(sr_jPanel_insertDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(sr_jLabel_todayCost)
@@ -172,7 +178,11 @@ public class ListaZakupow extends javax.swing.JFrame {
                         .addGroup(sr_jPanel_insertDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(sr_jLabel_weeklyCost)
                             .addComponent(sr_jTextField_weeklyCost, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(388, Short.MAX_VALUE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(sr_jPanel_insertDataLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(sr_jScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 446, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
 
         sr_jTabbedPane.addTab("Wprowadź zakupy", sr_jPanel_insertData);
@@ -224,6 +234,11 @@ public class ListaZakupow extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_sr_jTextField_insertNameActionPerformed
 
+    private void sr_jButton_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sr_jButton_saveActionPerformed
+        sr_jTextArea_today.setText(sr_jTextArea_today.getText()+sr_jTextField_insertName.getText()+"; "+sr_jTextField_insertValue.getText()+"; "+sr_jComboBox_typeOfProduct.getSelectedItem()+"; "+sr_jTextField_date.getText()+";\n");
+        clear();
+    }//GEN-LAST:event_sr_jButton_saveActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -263,10 +278,15 @@ public class ListaZakupow extends javax.swing.JFrame {
         sr_jTextField_insertName.addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
-                if(e.getKeyChar() == KeyEvent.VK_ENTER){
-                    System.out.println("Wprowadzono dane: ");
-                    sr_jTextField_insertName.setText(sr_jTextField_insertName.getText());
-                }
+//                if(e.getKeyChar() == KeyEvent.VK_ENTER){
+//                    System.out.println("Wprowadzono dane: ");
+//                    sr_jTextField_insertName.setText(sr_jTextField_insertName.getText());
+//                }
+                char ch = e.getKeyChar();
+                if((ch >= 'A' && ch <= 'z') || ch == KeyEvent.VK_BACK_SPACE || ch == KeyEvent.VK_SPACE){
+                    sr_jTextField_insertName.setEditable(true);
+                    System.out.println("Nacisnieto: "+ch);
+                }else sr_jTextField_insertName.setEditable(false);
             }
 
             @Override
@@ -309,7 +329,7 @@ public class ListaZakupow extends javax.swing.JFrame {
             @Override
             public void keyTyped(KeyEvent e) {
                 char ch = e.getKeyChar();
-                if(ch >= '0' && ch <= '9' || ch == KeyEvent.VK_BACK_SPACE || ch == KeyEvent.VK_PERIOD){
+                if(ch >= '0' && ch <= '9' || ch == KeyEvent.VK_BACK_SPACE || ch == KeyEvent.VK_PERIOD || ch == KeyEvent.VK_MINUS){
                     sr_jTextField_date.setEditable(true);
                     System.out.println("Nacisnieto cyfre "+ch);
                 }else sr_jTextField_date.setEditable(false);
@@ -327,6 +347,12 @@ public class ListaZakupow extends javax.swing.JFrame {
         });
     }
     
+    private void clear(){
+        sr_jTextField_insertName.setText("");
+        sr_jTextField_insertValue.setText("");
+        sr_jTextField_date.setText("");
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton sr_jButton_save;
     private javax.swing.JComboBox<String> sr_jComboBox_typeOfProduct;
@@ -342,11 +368,12 @@ public class ListaZakupow extends javax.swing.JFrame {
     private javax.swing.JMenu sr_jMenu_file;
     private javax.swing.JPanel sr_jPanel_insert;
     private javax.swing.JPanel sr_jPanel_insertData;
+    private javax.swing.JScrollPane sr_jScrollPane;
     private javax.swing.JTabbedPane sr_jTabbedPane;
+    private javax.swing.JTextArea sr_jTextArea_today;
     private javax.swing.JTextField sr_jTextField_date;
     private javax.swing.JTextField sr_jTextField_insertName;
     private javax.swing.JTextField sr_jTextField_insertValue;
-    private javax.swing.JTextField sr_jTextField_today;
     private javax.swing.JTextField sr_jTextField_todayCost;
     private javax.swing.JTextField sr_jTextField_weeklyCost;
     // End of variables declaration//GEN-END:variables

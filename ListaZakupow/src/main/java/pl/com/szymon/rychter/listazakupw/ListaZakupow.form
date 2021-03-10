@@ -88,13 +88,12 @@
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="sr_jTextField_today" max="32767" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" attributes="0">
                                               <Component id="sr_jLabel_insertName" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="0" pref="162" max="32767" attributes="0"/>
+                                              <EmptySpace min="0" pref="176" max="32767" attributes="0"/>
                                           </Group>
                                           <Component id="sr_jTextField_insertName" max="32767" attributes="0"/>
                                       </Group>
@@ -104,8 +103,9 @@
                                           <Component id="sr_jTextField_insertValue" min="-2" pref="80" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
+                                  <Component id="sr_jScrollPane" max="32767" attributes="0"/>
                               </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Group type="102" attributes="0">
                                       <Component id="sr_jLabel_todayCost" min="-2" max="-2" attributes="0"/>
@@ -150,11 +150,6 @@
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="sr_jTextField_today" max="32767" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="sr_jLabel_todayCost" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -165,7 +160,12 @@
                                   <Component id="sr_jLabel_weeklyCost" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="sr_jTextField_weeklyCost" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="388" max="32767" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="sr_jScrollPane" pref="446" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -194,8 +194,6 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Dzisiejsze zakupy"/>
               </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="sr_jTextField_today">
             </Component>
             <Component class="javax.swing.JLabel" name="sr_jLabel_typeOfProduct">
               <Properties>
@@ -231,6 +229,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="ZAPISZ"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="sr_jButton_saveActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="sr_jLabel_todayCost">
               <Properties>
@@ -249,6 +250,21 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="sr_jTextField_todayCostActionPerformed"/>
               </Events>
             </Component>
+            <Container class="javax.swing.JScrollPane" name="sr_jScrollPane">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JTextArea" name="sr_jTextArea_today">
+                  <Properties>
+                    <Property name="columns" type="int" value="20"/>
+                    <Property name="rows" type="int" value="5"/>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="sr_jPanel_insert">
