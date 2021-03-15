@@ -328,10 +328,14 @@ public class ListaZakupow extends javax.swing.JFrame {
         sr_jTextField_date.addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
+                String temp = sr_jTextField_date.getText();
                 char ch = e.getKeyChar();
-                if(ch >= '0' && ch <= '9' || ch == KeyEvent.VK_BACK_SPACE || ch == KeyEvent.VK_PERIOD || ch == KeyEvent.VK_MINUS){
+                if((ch >= '0' && ch <= '9' || ch == KeyEvent.VK_BACK_SPACE) && (temp.length()<10 || ch == KeyEvent.VK_BACK_SPACE)){
                     sr_jTextField_date.setEditable(true);
-                    System.out.println("Nacisnieto cyfre "+ch);
+                    if((temp.length() == 4 || temp.length() == 7) && ch != KeyEvent.VK_BACK_SPACE){
+                        sr_jTextField_date.setText(temp+"-");
+                    }
+                    //System.out.println("Nacisnieto cyfre "+ch);
                 }else sr_jTextField_date.setEditable(false);
             }
 
