@@ -138,15 +138,7 @@ public class szymon_rychter extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField_firstPartActionPerformed
 
     private void jButton_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_saveActionPerformed
-        try{
-            FileWriter fw = new FileWriter("szymon.rychter.txt", true);
-            String firstPart = jTextField_firstPart.getText();
-            String numbers = jTextField_numbers.getText();
-            fw.write(firstPart+"/"+numbers+"\n");
-            fw.close();
-        }catch(IOException e){
-            System.out.println(e.toString());
-        }
+        save();
     }//GEN-LAST:event_jButton_saveActionPerformed
 
     /**
@@ -226,6 +218,18 @@ public class szymon_rychter extends javax.swing.JFrame {
                 
             }
         });
+    }
+    
+    private void save(){
+        try{
+            FileWriter fw = new FileWriter("szymon.rychter.txt", true);
+            String firstPart = jTextField_firstPart.getText();
+            String numbers = jTextField_numbers.getText();
+            fw.write(firstPart+"/"+numbers+"\n");
+            fw.close();
+        }catch(IOException e){
+            System.out.println(e.toString());
+        }
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
