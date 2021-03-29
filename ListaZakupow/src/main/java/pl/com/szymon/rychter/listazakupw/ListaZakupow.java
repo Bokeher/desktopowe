@@ -7,6 +7,8 @@ package pl.com.szymon.rychter.listazakupw;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.FileWriter;
+import java.io.IOException;
 
 /**
  *
@@ -22,6 +24,7 @@ public class ListaZakupow extends javax.swing.JFrame {
         addKeyListenerTosr_jTextField_insertName();
         addKeyListenerTosr_jTextField_insertValue();
         addKeyListenerTosr_jTextField_date();
+        addTooltipToElements();
     }
 
     /**
@@ -235,8 +238,16 @@ public class ListaZakupow extends javax.swing.JFrame {
     }//GEN-LAST:event_sr_jTextField_insertNameActionPerformed
 
     private void sr_jButton_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sr_jButton_saveActionPerformed
-        sr_jTextArea_today.setText(sr_jTextArea_today.getText()+sr_jTextField_insertName.getText()+"; "+sr_jTextField_insertValue.getText()+"; "+sr_jComboBox_typeOfProduct.getSelectedItem()+"; "+sr_jTextField_date.getText()+";\n");
+        String data = sr_jTextArea_today.getText()+sr_jTextField_insertName.getText()+"; "+sr_jTextField_insertValue.getText()+"; "+sr_jComboBox_typeOfProduct.getSelectedItem()+"; "+sr_jTextField_date.getText()+";\n";
+        sr_jTextArea_today.setText(data);
         clear();
+        try{
+            FileWriter fw = new FileWriter(file_name, true);
+            fw.write(data.replaceAll("; ", ";"));
+            fw.close();
+        }catch(IOException ex){
+            System.out.println(ex.toString());
+        }
     }//GEN-LAST:event_sr_jButton_saveActionPerformed
 
     /**
@@ -301,15 +312,33 @@ public class ListaZakupow extends javax.swing.JFrame {
         });
     }
     
+    int state = 1;
+    
     private void addKeyListenerTosr_jTextField_insertValue(){
         sr_jTextField_insertValue.addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
                 char ch = e.getKeyChar();
-                if((ch >= '0' && ch <= '9') || ch == KeyEvent.VK_BACK_SPACE){
-                    sr_jTextField_insertValue.setEditable(true);
-                    System.out.println("Nacisnieto cyfre "+ch);
-                }else sr_jTextField_insertValue.setEditable(false);
+                String temp = sr_jTextField_insertValue.getText(); 
+                if(temp.contains(".")){
+                    if(temp.indexOf(".") == temp.length()+2){
+                        
+                    }else{
+                        System.out.print(temp.indexOf(".")+"  "+temp.length());
+                        if((ch >= '0' && ch <= '9') || ch == KeyEvent.VK_BACK_SPACE){
+                            sr_jTextField_insertValue.setEditable(true);
+
+                            //System.out.println("Nacisnieto cyfre "+ch);
+                        }else sr_jTextField_insertValue.setEditable(false);
+                    }
+                }else{
+                    if((ch >= '0' && ch <= '9') || ch == KeyEvent.VK_BACK_SPACE || ch == KeyEvent.VK_PERIOD){
+                        sr_jTextField_insertValue.setEditable(true);
+
+                        //System.out.println("Nacisnieto cyfre "+ch);
+                    }else sr_jTextField_insertValue.setEditable(false);
+                }
+                
             }
 
             @Override
@@ -356,6 +385,27 @@ public class ListaZakupow extends javax.swing.JFrame {
         sr_jTextField_insertValue.setText("");
         sr_jTextField_date.setText("");
     }
+    
+    private void addTooltipToElements(){
+        sr_jTextField_insertName.setToolTipText("<html>"
+                +"<h3>Wprowadz tekst</h3>"
+                +"<p>Nie uzywaj polskich znakow</p>"
+                +"</html>");
+        sr_jTextField_insertValue.setToolTipText("<html>"
+                +"<h3>Wprowadz liczbę</h3>"
+                +"<p>Można użyć kropki</p>"
+                +"</html>");
+        sr_jComboBox_typeOfProduct.setToolTipText("<html>"
+                +"<h3>Wprowadz typ zakupionego produktu</h3>"
+                +"</html>");
+        sr_jTextField_date.setToolTipText("<html>"
+                +"<h3>Wprowadz datę</h3>"
+                +"<p>Format: rrrr-mm-dd</p>"
+                +"</html>");
+    }
+    
+    private String file_name = "lista_zakopow.csv";
+    private String product_names = "product_names.csv";
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton sr_jButton_save;
