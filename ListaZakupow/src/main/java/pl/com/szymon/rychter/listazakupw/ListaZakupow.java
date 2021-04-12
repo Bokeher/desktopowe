@@ -7,8 +7,13 @@ package pl.com.szymon.rychter.listazakupw;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -21,10 +26,15 @@ public class ListaZakupow extends javax.swing.JFrame {
      */
     public ListaZakupow() {
         initComponents();
+        
+        FileUtils fu = new FileUtils();
+        sr_jTextArea_today.setText(fu.loadFileData(file_name));
+        
         addKeyListenerTosr_jTextField_insertName();
         addKeyListenerTosr_jTextField_insertValue();
         addKeyListenerTosr_jTextField_date();
         addTooltipToElements();
+        fillsr_jComboBox_typeOfProduct();
     }
 
     /**
@@ -238,16 +248,19 @@ public class ListaZakupow extends javax.swing.JFrame {
     }//GEN-LAST:event_sr_jTextField_insertNameActionPerformed
 
     private void sr_jButton_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sr_jButton_saveActionPerformed
-        String data = sr_jTextArea_today.getText()+sr_jTextField_insertName.getText()+"; "+sr_jTextField_insertValue.getText()+"; "+sr_jComboBox_typeOfProduct.getSelectedItem()+"; "+sr_jTextField_date.getText()+";\n";
-        sr_jTextArea_today.setText(data);
+        String data = sr_jTextArea_today.getText().trim()+sr_jTextField_insertName.getText().trim()+"; "+sr_jTextField_insertValue.getText().trim()+"; "+sr_jComboBox_typeOfProduct.getSelectedItem()+"; "+sr_jTextField_date.getText()+"\n";
+        //sr_jTextArea_today.setText(data);
         clear();
-        try{
-            FileWriter fw = new FileWriter(file_name, true);
-            fw.write(data.replaceAll("; ", ";"));
-            fw.close();
-        }catch(IOException ex){
-            System.out.println(ex.toString());
-        }
+//        try{
+//            FileWriter fw = new FileWriter(file_name, true);
+//            fw.write(data.replaceAll("; ", ";"));
+//            fw.close();
+//        }catch(IOException ex){
+//            System.out.println(ex.toString());
+//        }
+        
+        FileUtils fu = new FileUtils();
+        fu.saveToFile(data.replaceAll("; ", ";"), file_name);
     }//GEN-LAST:event_sr_jButton_saveActionPerformed
 
     /**
@@ -402,6 +415,35 @@ public class ListaZakupow extends javax.swing.JFrame {
                 +"<h3>Wprowadz datę</h3>"
                 +"<p>Format: rrrr-mm-dd</p>"
                 +"</html>");
+        sr_jComboBox_typeOfProduct.setToolTipText("<html>"
+                +"<h3>Wybierz typ zakupionego produtku produktu</h3>"
+                +"</html>");
+        sr_jButton_save.setToolTipText("<html>"
+                +"<h3>Zapisz do pliku</h3>"
+                +"</html>");
+        sr_jLabel_todayCost.setToolTipText("<html>"
+                +"<h3>Dzisiejsze wydatki</h3>"
+                +"</html>");
+        sr_jLabel_weeklyCost.setToolTipText("<html>"
+                +"<h3>Tygodniowe wydatki</h3>"
+                +"</html>");
+        sr_jTextArea_today.setToolTipText("<html>"
+                + "<h3>Dzisiejsze zakupy</h3>");
+    }
+    
+    private void fillsr_jComboBox_typeOfProduct(){
+        File f = new File("produkty.txt");
+        //ArticleTypeUtils atu = new ArticleTypeUtils();
+        try {
+            Scanner sc = new Scanner(f);
+            sr_jComboBox_typeOfProduct.removeAll();
+            while(sc.hasNext()){
+                sr_jComboBox_typeOfProduct.addItem(sc.nextLine());
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(ListaZakupow.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
     
     private String file_name = "lista_zakopow.csv";
