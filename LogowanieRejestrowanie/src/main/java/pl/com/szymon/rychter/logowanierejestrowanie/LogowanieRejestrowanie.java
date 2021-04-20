@@ -5,6 +5,9 @@
  */
 package pl.com.szymon.rychter.logowanierejestrowanie;
 
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
 /**
  *
  * @author Szymon
@@ -16,6 +19,7 @@ public class LogowanieRejestrowanie extends javax.swing.JFrame {
      */
     public LogowanieRejestrowanie() {
         initComponents();
+        
     }
 
     /**
@@ -30,17 +34,24 @@ public class LogowanieRejestrowanie extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jTabPane_main = new javax.swing.JTabbedPane();
         jPanel_login = new javax.swing.JPanel();
+        jLabel_login = new javax.swing.JLabel();
+        jLabel_email = new javax.swing.JLabel();
+        jTextField_email = new javax.swing.JTextField();
+        jLabel_password = new javax.swing.JLabel();
+        jButton_log_in = new javax.swing.JButton();
+        jPasswordField3 = new javax.swing.JPasswordField();
         jPanel_register = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jTextField_register_username = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        jTextField_register_email = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jLabel_error = new javax.swing.JLabel();
+        jPasswordField1 = new javax.swing.JPasswordField();
+        jPasswordField2 = new javax.swing.JPasswordField();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -55,15 +66,49 @@ public class LogowanieRejestrowanie extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jLabel_login.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel_login.setText("Logowanie");
+
+        jLabel_email.setText("Email");
+
+        jLabel_password.setText("Password");
+
+        jButton_log_in.setText("Zaloguj");
+
         javax.swing.GroupLayout jPanel_loginLayout = new javax.swing.GroupLayout(jPanel_login);
         jPanel_login.setLayout(jPanel_loginLayout);
         jPanel_loginLayout.setHorizontalGroup(
             jPanel_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 395, Short.MAX_VALUE)
+            .addGroup(jPanel_loginLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextField_email)
+                    .addGroup(jPanel_loginLayout.createSequentialGroup()
+                        .addGroup(jPanel_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel_login)
+                            .addComponent(jLabel_email)
+                            .addComponent(jLabel_password)
+                            .addComponent(jButton_log_in))
+                        .addGap(0, 308, Short.MAX_VALUE))
+                    .addComponent(jPasswordField3, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap())
         );
         jPanel_loginLayout.setVerticalGroup(
             jPanel_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 272, Short.MAX_VALUE)
+            .addGroup(jPanel_loginLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel_login)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel_email)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextField_email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel_password)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPasswordField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton_log_in)
+                .addContainerGap(119, Short.MAX_VALUE))
         );
 
         jTabPane_main.addTab("Logowanie", jPanel_login);
@@ -80,6 +125,14 @@ public class LogowanieRejestrowanie extends javax.swing.JFrame {
         jLabel5.setText("Confirm password");
 
         jButton1.setText("Rejestracja");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jLabel_error.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_error.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
         javax.swing.GroupLayout jPanel_registerLayout = new javax.swing.GroupLayout(jPanel_register);
         jPanel_register.setLayout(jPanel_registerLayout);
@@ -88,19 +141,22 @@ public class LogowanieRejestrowanie extends javax.swing.JFrame {
             .addGroup(jPanel_registerLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel_registerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField1)
-                    .addComponent(jTextField2)
-                    .addComponent(jTextField3)
-                    .addComponent(jTextField4)
+                    .addComponent(jPasswordField2)
+                    .addComponent(jTextField_register_username)
+                    .addComponent(jTextField_register_email)
+                    .addGroup(jPanel_registerLayout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel_error, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE))
+                    .addComponent(jPasswordField1)
                     .addGroup(jPanel_registerLayout.createSequentialGroup()
                         .addGroup(jPanel_registerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addComponent(jLabel2)
                             .addComponent(jLabel3)
                             .addComponent(jLabel4)
-                            .addComponent(jLabel5)
-                            .addComponent(jButton1))
-                        .addGap(0, 288, Short.MAX_VALUE)))
+                            .addComponent(jLabel5))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel_registerLayout.setVerticalGroup(
@@ -111,23 +167,29 @@ public class LogowanieRejestrowanie extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextField_register_username, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextField_register_email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(11, 11, 11)
+                .addGroup(jPanel_registerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel_registerLayout.createSequentialGroup()
+                        .addGap(0, 16, Short.MAX_VALUE)
+                        .addComponent(jButton1))
+                    .addComponent(jLabel_error, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
+
+        jLabel_error.getAccessibleContext().setAccessibleName("");
 
         jTabPane_main.addTab("Rejestrowanie", jPanel_register);
 
@@ -135,7 +197,7 @@ public class LogowanieRejestrowanie extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabPane_main, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+            .addComponent(jTabPane_main)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -144,6 +206,11 @@ public class LogowanieRejestrowanie extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        clear();
+        checkRegisterData();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -179,21 +246,77 @@ public class LogowanieRejestrowanie extends javax.swing.JFrame {
             }
         });
     }
+    
+    private void clear(){
+        jLabel_error.setText("");
+    }
+    
+    private void checkRegisterData(){
+        boolean username_err = false;
+        boolean email_err = false;
+        
+        //valid username
+        String username = jTextField_register_username.getText();
+        if(!(username.length() > 2 && username.length() < 20)) username_err = true;
+        else {
+            for(int i=0; i<username.length(); i++){
+                char ch = username.charAt(i);
+                if(!(ch >= 'A' && ch <= 'z')) username_err = true; 
+            }
+        }
+        
+        //valid email
+        String email = jTextField_register_email.getText();
+        if(email.contains("@")){
+            String tab[] = email.split("@");
+            
+            if(onlyLetters(tab[0]) == false) email_err = true;
+            
+            if(tab[1].contains(".")){
+                String []tab2 = tab[1].split(".");
+                if(tab2[0].length() < 1 || tab2[1].length() < 1) email_err = true;
+            }else email_err = true;
+        }else email_err = true;
+        
+        //Errors
+        String err_text = "<html>";
+        if(username_err == true) err_text = "Nieprawidłowa nazwa użytkownika<br>";
+        if(email_err == true) err_text += "Nieprawidłowy email\n";
+        
+        err_text += "</html>";
+
+        jLabel_error.setText(err_text);
+    }
+    
+    private boolean onlyLetters(String text){
+        for(int i=0; i<text.length(); i++){
+            char ch = text.charAt(i);
+            if(!(ch >= 'A' && ch <= 'z')) return false;
+        }
+        return true;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton_log_in;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel_email;
+    private javax.swing.JLabel jLabel_error;
+    private javax.swing.JLabel jLabel_login;
+    private javax.swing.JLabel jLabel_password;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel_login;
     private javax.swing.JPanel jPanel_register;
+    private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JPasswordField jPasswordField2;
+    private javax.swing.JPasswordField jPasswordField3;
     private javax.swing.JTabbedPane jTabPane_main;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField_email;
+    private javax.swing.JTextField jTextField_register_email;
+    private javax.swing.JTextField jTextField_register_username;
     // End of variables declaration//GEN-END:variables
 }
