@@ -72,14 +72,14 @@
                           <Component id="jTextField_email" alignment="0" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel_login" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel_email" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel_password" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel_login_title" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel_login_email" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel_login_password" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jButton_log_in" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="0" pref="308" max="32767" attributes="0"/>
                           </Group>
-                          <Component id="jPasswordField3" alignment="1" max="32767" attributes="0"/>
+                          <Component id="jPasswordField" alignment="1" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -89,24 +89,24 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jLabel_login" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel_login_title" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jLabel_email" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel_login_email" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jTextField_email" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jLabel_password" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel_login_password" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jPasswordField3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jPasswordField" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jButton_log_in" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="119" max="32767" attributes="0"/>
+                      <EmptySpace pref="127" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="jLabel_login">
+            <Component class="javax.swing.JLabel" name="jLabel_login_title">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="14" style="0"/>
@@ -114,14 +114,14 @@
                 <Property name="text" type="java.lang.String" value="Logowanie"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel_email">
+            <Component class="javax.swing.JLabel" name="jLabel_login_email">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Email"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField_email">
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel_password">
+            <Component class="javax.swing.JLabel" name="jLabel_login_password">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Password"/>
               </Properties>
@@ -130,8 +130,11 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Zaloguj"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_log_inActionPerformed"/>
+              </Events>
             </Component>
-            <Component class="javax.swing.JPasswordField" name="jPasswordField3">
+            <Component class="javax.swing.JPasswordField" name="jPasswordField">
             </Component>
           </SubComponents>
         </Container>
@@ -147,27 +150,31 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jPasswordField2" max="32767" attributes="0"/>
                           <Component id="jTextField_register_username" max="32767" attributes="0"/>
                           <Component id="jTextField_register_email" alignment="0" max="32767" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jLabel_error" pref="270" max="32767" attributes="0"/>
-                          </Group>
                           <Component id="jPasswordField1" alignment="0" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel_register_title" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel_username" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel_register_email" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel_password1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel_password2" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jButton_register" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabel_error1" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="jLabel_error2" pref="289" max="32767" attributes="0"/>
+                                  <Component id="jLabel_error3" alignment="1" pref="289" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -178,38 +185,41 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel_register_title" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel_username" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jTextField_register_username" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel_register_email" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jTextField_register_email" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel_password1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jPasswordField1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel_password2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jPasswordField2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
                           <Group type="102" attributes="0">
-                              <EmptySpace min="0" pref="16" max="32767" attributes="0"/>
-                              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                              <Component id="jPasswordField2" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="jLabel_error1" min="-2" pref="19" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                              <Component id="jButton_register" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jLabel_error" max="32767" attributes="0"/>
+                          <Component id="jLabel_error2" min="-2" pref="19" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jLabel_error3" min="-2" pref="19" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="jLabel1">
+            <Component class="javax.swing.JLabel" name="jLabel_register_title">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="14" style="0"/>
@@ -217,50 +227,59 @@
                 <Property name="text" type="java.lang.String" value="Rejestracja"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel2">
+            <Component class="javax.swing.JLabel" name="jLabel_username">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Username"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField_register_username">
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel3">
+            <Component class="javax.swing.JLabel" name="jLabel_register_email">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Email"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField_register_email">
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel4">
+            <Component class="javax.swing.JLabel" name="jLabel_password1">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Password"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel5">
+            <Component class="javax.swing.JLabel" name="jLabel_password2">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Confirm password"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton1">
+            <Component class="javax.swing.JButton" name="jButton_register">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Rejestracja"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_registerActionPerformed"/>
               </Events>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel_error">
-              <Properties>
-                <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="verticalAlignment" type="int" value="1"/>
-              </Properties>
-              <AccessibilityProperties>
-                <Property name="AccessibleContext.accessibleName" type="java.lang.String" value=""/>
-              </AccessibilityProperties>
             </Component>
             <Component class="javax.swing.JPasswordField" name="jPasswordField1">
             </Component>
             <Component class="javax.swing.JPasswordField" name="jPasswordField2">
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel_error1">
+              <Properties>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="verticalAlignment" type="int" value="1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel_error2">
+              <Properties>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="verticalAlignment" type="int" value="1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel_error3">
+              <Properties>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="verticalAlignment" type="int" value="1"/>
+              </Properties>
             </Component>
           </SubComponents>
         </Container>
