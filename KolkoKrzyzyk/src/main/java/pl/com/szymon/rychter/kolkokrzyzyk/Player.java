@@ -12,7 +12,8 @@ package pl.com.szymon.rychter.kolkokrzyzyk;
 public class Player {
     private String sign = "";
     private String name = "";
-    
+    private boolean computer = false;
+
     public Player(String sign, String name){
         this.name = name;
         this.sign = sign;
@@ -33,4 +34,14 @@ public class Player {
     public void setName(String name) {
         this.name = name;
     }  
+
+    public boolean isComputer() {
+        return computer;
+    }
+
+    public void setComputer(boolean computer) {
+        this.computer = computer;
+    }
+    
+    
 }

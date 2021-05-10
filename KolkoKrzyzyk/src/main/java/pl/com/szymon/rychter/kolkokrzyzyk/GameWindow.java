@@ -17,7 +17,7 @@ import pl.com.szymon.rychter.kolkokrzyzyk.gameutils.DrawPlayer;
  */
 public class GameWindow extends javax.swing.JFrame {
     private Player p1, p2;
-    private boolean player = false; 
+    private boolean player = false;
     
     /**
      * Creates new form GameWindow
