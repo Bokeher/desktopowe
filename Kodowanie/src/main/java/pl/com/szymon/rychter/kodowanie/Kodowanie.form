@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Component id="jTabbedPane1" alignment="0" max="32767" attributes="0"/>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Component id="jTabbedPane1" alignment="0" pref="307" max="32767" attributes="0"/>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Container class="javax.swing.JTabbedPane" name="jTabbedPane1">
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
+      <SubComponents>
+        <Container class="javax.swing.JPanel" name="jP_code">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Kodowanie">
+                <Property name="tabTitle" type="java.lang.String" value="Kodowanie"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="jB_code_code" min="-2" pref="80" max="-2" attributes="0"/>
+                              <EmptySpace pref="64" max="32767" attributes="0"/>
+                              <Component id="jL_code_error" min="-2" pref="220" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="jL_code_key" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jL_code_text" alignment="0" pref="140" max="32767" attributes="0"/>
+                                  <Component id="jL_code_result" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="jTF_code_text" pref="200" max="32767" attributes="0"/>
+                                          <Component id="jTF_code_key" max="32767" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="jTF_code_result" min="-2" pref="200" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                      </Group>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jL_code_text" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                          <Component id="jTF_code_text" alignment="3" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jL_code_key" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                          <Component id="jTF_code_key" alignment="3" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jB_code_code" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jL_code_error" alignment="3" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jL_code_result" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                          <Component id="jTF_code_result" alignment="3" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="169" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="jL_code_text">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Tekst do zakodowania:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTF_code_text">
+            </Component>
+            <Component class="javax.swing.JLabel" name="jL_code_key">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Klucz:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTF_code_key">
+            </Component>
+            <Component class="javax.swing.JButton" name="jB_code_code">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Zakoduj"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jB_code_codeActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jL_code_result">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Wynik:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTF_code_result">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jL_code_error">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="err"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="jP_decode">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Dekodowanie">
+                <Property name="tabTitle" type="java.lang.String" value="Dekodowanie"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="jB_decode_decode" min="-2" pref="80" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="jL_decode_error" min="-2" pref="220" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="jL_decode_result" max="32767" attributes="0"/>
+                                  <Component id="jL_decode_key" max="32767" attributes="0"/>
+                                  <Component id="jL_decode_text" pref="140" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="jTF_decode_text" pref="200" max="32767" attributes="0"/>
+                                      <Component id="jTF_decode_key" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Component id="jTF_decode_result" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="0" pref="20" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jL_decode_text" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                          <Component id="jTF_decode_text" alignment="3" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jL_decode_key" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                          <Component id="jTF_decode_key" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jB_decode_decode" min="-2" max="-2" attributes="0"/>
+                          <Component id="jL_decode_error" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jL_decode_result" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                          <Component id="jTF_decode_result" alignment="3" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="169" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="jL_decode_text">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Tekst do odkodowania:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTF_decode_text">
+            </Component>
+            <Component class="javax.swing.JLabel" name="jL_decode_key">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Klucz:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTF_decode_key">
+            </Component>
+            <Component class="javax.swing.JButton" name="jB_decode_decode">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Odkoduj"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jB_decode_decodeActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jL_decode_result">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Wynik:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTF_decode_result">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jL_decode_error">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="err"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+      </SubComponents>
+    </Container>
+  </SubComponents>
+</Form>
