@@ -56,12 +56,6 @@ public class Waluta {
         this.ask = ask;
     }
 
-    @Override
-    public String toString() {
-        return currency+";"+code+";"+bid +";"+ask+";"+askPrize+";"+bidPrize;
-    }
-    
-
     public double getBidPrize() {
         return bidPrize;
     }
@@ -72,9 +66,11 @@ public class Waluta {
     
     public void calcBidPrize(double amount) {
         bidPrize = amount * bid;
+        bidPrize = (double) Math.round((bidPrize*100))/100;
     }
     
     public void calcAskPrize(double amount) {
-        bidPrize = amount / ask;
+        askPrize = amount / ask;
+        askPrize = (double) Math.round((askPrize*100))/100;
     }
 }
