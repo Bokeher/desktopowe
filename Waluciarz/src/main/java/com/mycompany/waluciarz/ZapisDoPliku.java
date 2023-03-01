@@ -35,12 +35,25 @@ public class ZapisDoPliku {
         }
     }
     
-    public ArrayList<String> odczyt() {
-        String res = "";
+    public ArrayList<Waluta> odczyt() {
+        String row = "";
+        ArrayList<Waluta> listaSprzedazy = new ArrayList<>();
+        ArrayList<Waluta> listaKupna = new ArrayList<>();
         try {
             Scanner sc = new Scanner(file);
             while(sc.hasNextLine()) {
-                res += sc.nextLine()+"|";
+                row = sc.nextLine();
+                String[] data = row.split(";");
+                Waluta waluta = null;
+                if(data[0].equals("k")) {
+                  //kupno
+//                  waluta = new Waluta(row, row, row, row, row)
+                } else {
+                  //sprzedaz
+                  
+                }
+//                Waluta waluta = new Waluta(data[0], data[], row, row)
+                
             }
         } catch (FileNotFoundException ex) {
             Logger.getLogger(ZapisDoPliku.class.getName()).log(Level.SEVERE, null, ex);

@@ -15,12 +15,21 @@ public class Waluta {
     private double ask;
     private double bidPrize;
     private double askPrize;
+    private double prize;
     
     public Waluta(String code, String currency, String bid, String ask) {
         this.code = code;
         this.currency = currency;
         this.bid = Double.parseDouble(bid);
         this.ask = Double.parseDouble(ask);
+    }
+    
+    public Waluta(String code, String currency, String bid, String ask, String prize) {
+        this.code = code;
+        this.currency = currency;
+        this.bid = Double.parseDouble(bid);
+        this.ask = Double.parseDouble(ask);
+        this.prize = Double.parseDouble(prize);
     }
     
 

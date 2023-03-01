@@ -63,8 +63,10 @@ public class Waluciarz extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jTextField_kurs = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jButton_loadData = new javax.swing.JButton();
+        jComboBox_loadType = new javax.swing.JComboBox<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea_data = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(153, 153, 153));
@@ -175,9 +177,18 @@ public class Waluciarz extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Kantor", jPanel1);
 
-        jButton2.setText("Wczytaj");
+        jButton_loadData.setText("Wczytaj");
+        jButton_loadData.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_loadDataActionPerformed(evt);
+            }
+        });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Kupno", "Sprzedaż" }));
+        jComboBox_loadType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Kupno", "Sprzedaż" }));
+
+        jTextArea_data.setColumns(20);
+        jTextArea_data.setRows(5);
+        jScrollPane1.setViewportView(jTextArea_data);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -185,19 +196,25 @@ public class Waluciarz extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(326, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 494, Short.MAX_VALUE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jButton_loadData)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jComboBox_loadType, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(340, Short.MAX_VALUE))
+                    .addComponent(jButton_loadData)
+                    .addComponent(jComboBox_loadType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 328, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab("Odczyt", jPanel2);
@@ -231,7 +248,7 @@ public class Waluciarz extends javax.swing.JFrame {
         else try {
             double kwota = Double.parseDouble(kwotaText);
             Waluta waluta = waluty.get(currentWalutaId);
-            ZapisDoPliku zapisDoPliku = new ZapisDoPliku(new File("zapis.txt"));
+            ZapisDoPliku zapisDoPliku = new ZapisDoPliku(f);
             
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
             LocalDateTime now = LocalDateTime.now();  
@@ -244,12 +261,12 @@ public class Waluciarz extends javax.swing.JFrame {
                 //sprzedaz
                 waluta.calcBidPrize(kwota);
                 przeliczonaWaluta = waluta.getBidPrize();
-                textDoZapisu += "k;"+kwota+";"+przeliczonaWaluta+";"+waluta.getBid();
+                textDoZapisu += "s;"+kwota+";"+przeliczonaWaluta+";"+waluta.getBid();
             } else {
                 //kupno
                 waluta.calcAskPrize(kwota);
                 przeliczonaWaluta = waluta.getAskPrize();
-                textDoZapisu += "s;"+kwota+";"+przeliczonaWaluta+";"+waluta.getAsk();
+                textDoZapisu += "k;"+kwota+";"+przeliczonaWaluta+";"+waluta.getAsk();
             }
             
             zapisDoPliku.zapisz(textDoZapisu);
@@ -263,6 +280,22 @@ public class Waluciarz extends javax.swing.JFrame {
         currentActionId = jComboBox_wybierzDzialanie.getSelectedIndex();
         updateView();
     }//GEN-LAST:event_jComboBox_wybierzDzialanieActionPerformed
+
+    private void jButton_loadDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_loadDataActionPerformed
+        int index = jComboBox_loadType.getSelectedIndex();
+        
+        ZapisDoPliku zapisDoPliku = new ZapisDoPliku(f);
+        ArrayList<String> data = zapisDoPliku.odczyt();
+        
+        
+        jTextArea_data.setText(data.toString());
+        
+        if(index == 0) {
+            
+        } else {
+            
+        }
+    }//GEN-LAST:event_jButton_loadDataActionPerformed
 
     /**
      * @param args the command line arguments
@@ -324,11 +357,12 @@ public class Waluciarz extends javax.swing.JFrame {
     private int currentWalutaId = 0;
     private int currentActionId = 0;
     ArrayList<Waluta> waluty = new ArrayList<>();
+    File f = new File("data.txt");
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JButton jButton_loadData;
+    private javax.swing.JComboBox<String> jComboBox_loadType;
     private javax.swing.JComboBox<String> jComboBox_wybierzDzialanie;
     private javax.swing.JComboBox<String> jComboBox_wybierzWaluty;
     private javax.swing.JLabel jL_error;
@@ -340,7 +374,9 @@ public class Waluciarz extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel_przeliczonaKwota;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTextArea jTextArea_data;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField_kurs;
     private javax.swing.JTextField jTextField_kwota;
