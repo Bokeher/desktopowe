@@ -9,14 +9,17 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
- * @author adrianziebowski
+ * nazwa klasy: ZapisDoPliku
+ * informacje: zapisuje oraz odczytuje z pliku
+ * autor: Szymon Rychter
  */
 public class ZapisDoPliku {
     private File file;
@@ -24,7 +27,13 @@ public class ZapisDoPliku {
     public ZapisDoPliku(File f) {
         this.file = f;
     }
-
+    /**
+     * nazwa funkcji: zapisz
+     * argumenty: String text - tekst ktory ma zostac zapisany
+     * typ  zwracany: brak
+     * informacje: zapisuje do pliku tekst
+     * autor: Szymon Rychter
+     */
     public void zapisz(String text) {
         try {
             FileWriter fw = new FileWriter(file, true);
@@ -35,36 +44,56 @@ public class ZapisDoPliku {
         }
     }
     
-    public ArrayList<Waluta> odczyt() {
+    /**
+     * nazwa funkcji: odczyt
+     * argumenty: brak
+     * typ  zwracany: Map<String, ArrayList<FileData>> - mapa ktora ma 2 listy. 1 lista ma listeSprzedazy druga ma listeKupna
+     * informacje: odczytuje z pliku
+     * autor: Szymon Rychter
+     */
+    public Map<String, ArrayList<FileData>> odczyt() {
         String row = "";
-        ArrayList<Waluta> listaSprzedazy = new ArrayList<>();
-        ArrayList<Waluta> listaKupna = new ArrayList<>();
+        ArrayList<FileData> listaSprzedazy = new ArrayList<>();
+        ArrayList<FileData> listaKupna = new ArrayList<>();
         try {
             Scanner sc = new Scanner(file);
             while(sc.hasNextLine()) {
                 row = sc.nextLine();
                 String[] data = row.split(";");
-                Waluta waluta = null;
-                if(data[0].equals("k")) {
+                
+                Date date = new Date(data[0]);
+                String code = data[1];
+                String type = data[2];
+                double prize = Double.parseDouble(data[3]);
+                double finalPrize = Double.parseDouble(data[4]); 
+                double multiplayer = Double.parseDouble(data[5]);
+                FileData fileData = new FileData(date, code, type, prize, finalPrize, multiplayer);
+                
+                System.out.println(fileData.getType());
+                System.out.println(data[2]);
+                
+                if(fileData.getType().equals("k")) {
                   //kupno
-//                  waluta = new Waluta(row, row, row, row, row)
+                  //public FileData(Date date, String code, String type, double prize, double finalPrize, double multiplayer) {
+                  listaKupna.add(fileData);
                 } else {
                   //sprzedaz
+                  listaSprzedazy.add(fileData);
                   
                 }
 //                Waluta waluta = new Waluta(data[0], data[], row, row)
-                
             }
+            System.out.println(listaSprzedazy.get(0).getPrize());
+            System.out.println(listaKupna.get(0).getPrize());
         } catch (FileNotFoundException ex) {
             Logger.getLogger(ZapisDoPliku.class.getName()).log(Level.SEVERE, null, ex);
         }
-        String[] arr = res.split(";");
-        if(arr.length == 0) return null;
         
-        ArrayList<String> list = new ArrayList<>();
-        list.addAll(Arrays.asList(arr));
+        Map<String, ArrayList<FileData>> map = new HashMap<>();
+        map.put("listaKupna", listaKupna);
+        map.put("listaSprzedazy", listaSprzedazy);
         
-        return list;
+        return map;
     }
     
 }

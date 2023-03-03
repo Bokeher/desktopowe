@@ -5,8 +5,9 @@
 package com.mycompany.waluciarz;
 
 /**
- *
- * @author adrianziebowski
+ * nazwa funkcji: waluta
+ * informacje: przechowuje informacje o walucie
+ * autor: Szymon Rychter
  */
 public class Waluta {
     private String code;
@@ -15,23 +16,13 @@ public class Waluta {
     private double ask;
     private double bidPrize;
     private double askPrize;
-    private double prize;
     
     public Waluta(String code, String currency, String bid, String ask) {
         this.code = code;
         this.currency = currency;
         this.bid = Double.parseDouble(bid);
         this.ask = Double.parseDouble(ask);
-    }
-    
-    public Waluta(String code, String currency, String bid, String ask, String prize) {
-        this.code = code;
-        this.currency = currency;
-        this.bid = Double.parseDouble(bid);
-        this.ask = Double.parseDouble(ask);
-        this.prize = Double.parseDouble(prize);
-    }
-    
+    }    
 
     public String getCode() {
         return code;
@@ -73,11 +64,24 @@ public class Waluta {
         return askPrize;
     }
     
+    /**
+     * nazwa funkcji: calcBidPrize
+     * argumenty: double amount - wartosc do przeliczenia
+     * typ  zwracany: brak
+     * informacje: oblicza cene sprzedazy
+     * autor: Szymon Rychter
+     */
     public void calcBidPrize(double amount) {
         bidPrize = amount * bid;
         bidPrize = (double) Math.round((bidPrize*100))/100;
     }
-    
+    /**
+     * nazwa funkcji: calcAskPrize
+     * argumenty: double amount - wartosc do przeliczenia
+     * typ  zwracany: brak
+     * informacje: oblicza cene kupna
+     * autor: Szymon Rychter
+     */
     public void calcAskPrize(double amount) {
         askPrize = amount / ask;
         askPrize = (double) Math.round((askPrize*100))/100;

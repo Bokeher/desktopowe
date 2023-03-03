@@ -5,13 +5,11 @@
 package com.mycompany.waluciarz;
 
 import java.io.File;
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
+import java.util.Comparator;
+import java.util.Map;
 import javax.swing.DefaultComboBoxModel;
 
 /**
@@ -36,6 +34,7 @@ public class Waluciarz extends javax.swing.JFrame {
         }
         jComboBox_wybierzWaluty.setModel(new DefaultComboBoxModel(codeList.toArray()));
         updateView();
+        initLists();
     }
 
     /**
@@ -67,9 +66,14 @@ public class Waluciarz extends javax.swing.JFrame {
         jComboBox_loadType = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea_data = new javax.swing.JTextArea();
+        jComboBox_chooseSorting = new javax.swing.JComboBox<>();
+        jComboBox_chooseAscending = new javax.swing.JComboBox<>();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(153, 153, 153));
+
+        jTabbedPane1.setBackground(new java.awt.Color(204, 204, 204));
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -177,6 +181,8 @@ public class Waluciarz extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Kantor", jPanel1);
 
+        jPanel2.setBackground(new java.awt.Color(204, 204, 204));
+
         jButton_loadData.setText("Wczytaj");
         jButton_loadData.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -185,10 +191,34 @@ public class Waluciarz extends javax.swing.JFrame {
         });
 
         jComboBox_loadType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Kupno", "Sprzedaż" }));
+        jComboBox_loadType.setEnabled(false);
+        jComboBox_loadType.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox_loadTypeActionPerformed(evt);
+            }
+        });
 
         jTextArea_data.setColumns(20);
         jTextArea_data.setRows(5);
         jScrollPane1.setViewportView(jTextArea_data);
+
+        jComboBox_chooseSorting.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Przelicznik", "Kwota przeliczona", "Początkowa kwota" }));
+        jComboBox_chooseSorting.setEnabled(false);
+        jComboBox_chooseSorting.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox_chooseSortingActionPerformed(evt);
+            }
+        });
+
+        jComboBox_chooseAscending.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Malejąco", "Rosnąco" }));
+        jComboBox_chooseAscending.setEnabled(false);
+        jComboBox_chooseAscending.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox_chooseAscendingActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setText("Sortuj według:");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -197,12 +227,17 @@ public class Waluciarz extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 494, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jButton_loadData)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jComboBox_loadType, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jComboBox_chooseSorting, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jComboBox_chooseAscending, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -211,9 +246,12 @@ public class Waluciarz extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton_loadData)
-                    .addComponent(jComboBox_loadType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBox_loadType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jComboBox_chooseSorting, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox_chooseAscending, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 328, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -271,6 +309,7 @@ public class Waluciarz extends javax.swing.JFrame {
             
             zapisDoPliku.zapisz(textDoZapisu);
             jTextField2.setText(przeliczonaWaluta+"");
+            jL_error.setText("");
         } catch(Exception ex) {
             jL_error.setText("To nie jest liczba");
         }
@@ -282,20 +321,25 @@ public class Waluciarz extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox_wybierzDzialanieActionPerformed
 
     private void jButton_loadDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_loadDataActionPerformed
-        int index = jComboBox_loadType.getSelectedIndex();
-        
-        ZapisDoPliku zapisDoPliku = new ZapisDoPliku(f);
-        ArrayList<String> data = zapisDoPliku.odczyt();
-        
-        
-        jTextArea_data.setText(data.toString());
-        
-        if(index == 0) {
-            
-        } else {
-            
-        }
+        enableElems();
+        initLists();
+        sort();
+        updateViewOfData();
     }//GEN-LAST:event_jButton_loadDataActionPerformed
+
+    private void jComboBox_chooseSortingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_chooseSortingActionPerformed
+        sort();
+        updateViewOfData();
+    }//GEN-LAST:event_jComboBox_chooseSortingActionPerformed
+
+    private void jComboBox_loadTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_loadTypeActionPerformed
+        updateViewOfData();
+    }//GEN-LAST:event_jComboBox_loadTypeActionPerformed
+
+    private void jComboBox_chooseAscendingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_chooseAscendingActionPerformed
+        sort();
+        updateViewOfData();
+    }//GEN-LAST:event_jComboBox_chooseAscendingActionPerformed
 
     /**
      * @param args the command line arguments
@@ -332,6 +376,13 @@ public class Waluciarz extends javax.swing.JFrame {
         });
     }
     
+    /**
+     * nazwa funkcji: updateView
+     * argumenty: brak
+     * typ  zwracany: brak
+     * informacje: odswieza wyglad w przypadku zmiany kupna/sprzedazy
+     * autor: Szymon Rychter
+     */
     private void updateView() {
         final String code = waluty.get(currentWalutaId).getCode();
         if(currentActionId == 1) {
@@ -346,6 +397,13 @@ public class Waluciarz extends javax.swing.JFrame {
         updateKurs();
     }
     
+    /**
+     * nazwa funkcji: updateKurs
+     * argumenty: brak
+     * typ  zwracany: brak
+     * informacje: uaktualnia kurs w wygladzie
+     * autor: Szymon Rychter
+     */
     private void updateKurs() {
         double kurs = waluty.get(currentWalutaId).getAsk();
         if(currentActionId == 1) {
@@ -354,6 +412,91 @@ public class Waluciarz extends javax.swing.JFrame {
         jTextField_kurs.setText(kurs+"");
     }
     
+    /**
+     * nazwa funkcji: initLists
+     * argumenty: brak
+     * typ  zwracany: brak
+     * informacje: odczytuje dane z pliku i zapisuje do list
+     * autor: Szymon Rychter
+     */
+    private void initLists() {
+        ZapisDoPliku zapisDoPliku = new ZapisDoPliku(f);
+        Map<String, ArrayList<FileData>> map = zapisDoPliku.odczyt();
+        listaSprzedazy = map.get("listaSprzedazy");
+        listaKupna = map.get("listaKupna");
+    }
+    
+    /**
+     * nazwa funkcji: sort
+     * argumenty: brak
+     * typ  zwracany: brak
+     * informacje: sortuje listy
+     * autor: Szymon Rychter
+     */
+    private void sort() {
+        int index = jComboBox_chooseSorting.getSelectedIndex();
+
+        Comparator comp = null;
+        switch (index) {
+            case 0 -> comp = Comparator.comparing(FileData::getMultiplayer);
+            case 1 -> comp = Comparator.comparing(FileData::getFinalPrize);
+            case 2 -> comp = Comparator.comparing(FileData::getPrize);
+            default -> {
+            }
+        }
+
+        if(jComboBox_chooseAscending.getSelectedIndex() == 0) {
+            comp = comp.reversed();
+        } 
+        listaKupna.sort(comp);
+        listaSprzedazy.sort(comp);
+        updateViewOfData();
+        
+    }
+    
+    /**
+     * nazwa funkcji: enableElems
+     * argumenty: brak
+     * typ  zwracany: brak
+     * informacje: umozliwia klikniecie przyciskow
+     * autor: Szymon Rychter
+     */
+    private void enableElems() {
+        jComboBox_loadType.setEnabled(true);
+        jComboBox_chooseSorting.setEnabled(true);
+        jComboBox_chooseAscending.setEnabled(true);
+    }
+    
+    /**
+     * nazwa funkcji: updateViewOfData
+     * argumenty: brak
+     * typ  zwracany: brak
+     * informacje: wypisuje listy do jTextArea_data
+     * autor: Szymon Rychter
+     */
+    private void updateViewOfData() {
+        int index = jComboBox_loadType.getSelectedIndex();
+
+        if(index == 0) {
+            //kupno
+            String text = "";
+            for (FileData fileData : listaKupna) {
+                text += fileData.toString();
+            }
+            
+            jTextArea_data.setText(text);
+        } else {
+            String text = "";
+            for (FileData fileData : listaSprzedazy) {
+                text += fileData.toString();
+            }
+            
+            jTextArea_data.setText(text);
+        }
+    }
+    
+    private ArrayList<FileData> listaSprzedazy;
+    private ArrayList<FileData> listaKupna;
     private int currentWalutaId = 0;
     private int currentActionId = 0;
     ArrayList<Waluta> waluty = new ArrayList<>();
@@ -362,6 +505,8 @@ public class Waluciarz extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton_loadData;
+    private javax.swing.JComboBox<String> jComboBox_chooseAscending;
+    private javax.swing.JComboBox<String> jComboBox_chooseSorting;
     private javax.swing.JComboBox<String> jComboBox_loadType;
     private javax.swing.JComboBox<String> jComboBox_wybierzDzialanie;
     private javax.swing.JComboBox<String> jComboBox_wybierzWaluty;
@@ -370,6 +515,7 @@ public class Waluciarz extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel_ilosc;
     private javax.swing.JLabel jLabel_przeliczonaKwota;
     private javax.swing.JPanel jPanel1;

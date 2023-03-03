@@ -13,12 +13,20 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 /**
- *
- * @author adrianziebowski
+ * nazwa: GetData
+ * informacje: klasa do pobierania danych z api nbp
+ * @author: Szymon Rychter
  */
 public class GetData {
     private final String url = "https://api.nbp.pl/api/exchangerates/tables/c?format=json";
         
+    /**
+     * nazwa funkcji: get
+     * argumenty: brak
+     * typ  zwracany: ArrayList<Waluta>
+     * informacje: pobiera dane z api nbp i zwraca liste walut
+     * autor: Szymon Rychter
+     */
     public ArrayList<Waluta> get() {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
